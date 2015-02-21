@@ -10,11 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	let stringsToTest = [
+		"Dingo in Wonderland",
+		"Melbourne Dingo",
+		"You Better Take Cover by Harry Hayes",
+		"Sience 1997; Melbourne Dingo Harry; Crazy Cat",
+	]
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
-		println( ("xxxxxxxx" as NSString).scoreAgainst( "xxxx" ) )
+		let f = 1.0
+		for s in stringsToTest {
+			
+			println( (s as NSString).scoreAgainst("Melbourne Dingo Harry", fuzziness: f, options: NSStringScoreOption.None) )
+			println( ("Melbourne Dingo Harry" as NSString).scoreAgainst(s, fuzziness: f, options: NSStringScoreOption.None) )
+		}
+		
+		for s in stringsToTest {
+			
+			println( s.scoreAgainst("Melbourne Dingo Harry", fuzziness: f, options: StringScoreOption.None) )
+			println( "Melbourne Dingo Harry".scoreAgainst(s, fuzziness: f, options: StringScoreOption.None) )
+		}
 		
 		println( ( StringScoreOption.FavorSmallerWords ).rawValue ) // = 1
 		println( ( StringScoreOption.ReducedLongStringPenalty ).rawValue ) // = 2

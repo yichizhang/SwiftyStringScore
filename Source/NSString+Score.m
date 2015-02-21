@@ -27,6 +27,8 @@
     
     NSString *string = [[[self decomposedStringWithCanonicalMapping] componentsSeparatedByCharactersInSet:invalidCharacterSet] componentsJoinedByString:@""];
     NSString *otherString = [[[anotherString decomposedStringWithCanonicalMapping] componentsSeparatedByCharactersInSet:invalidCharacterSet] componentsJoinedByString:@""];
+	
+	NSLog(@"\n--%@--\n==%@==\n", string, otherString);
     
     // If the string is equal to the abbreviation, perfect match.
     if([string isEqualToString:otherString]) return (CGFloat) 1.0f;
@@ -123,7 +125,14 @@
         finalScore = (wordScore + otherStringScore) / 2;
         
     } else {
-        finalScore = ((otherStringScore * ((CGFloat)(otherStringLength) / (CGFloat)(stringLength))) + otherStringScore) / 2;
+        finalScore = (
+					  (otherStringScore *
+					   ((CGFloat)(otherStringLength) / (CGFloat)(stringLength) )
+					   
+					   )
+					  +
+					  
+					  otherStringScore) / 2;
     }
     
     finalScore = finalScore / fuzzies;
