@@ -79,7 +79,8 @@ extension String {
 					if let fuzziness = fuzziness {
 						fuzzies += 1.0 - fuzziness
 					} else {
-						return 0.0 // This is an error
+						println("String is not found, and fuzziness is not set.")
+						return 0.0
 					}
 				}
 			}

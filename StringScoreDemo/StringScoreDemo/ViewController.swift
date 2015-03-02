@@ -18,31 +18,44 @@ class ViewController: UIViewController {
 	]
 	lazy var textView:UITextView = {
 		let tv = UITextView(frame: self.view.bounds)
-		
+		tv.editable = false
 		return tv
 	}()
+	
+	func testDisplayStringFor(#string1:String, string2:String, fuzziness:Double, options:StringScoreOption) -> String {
+		
+		var t = "fuzziness = \(fuzziness); options = \(options.rawValue)\n\(string1) AGAINST \(string2)\n"
+		var o = NSStringScoreOption(rawValue: options.rawValue)
+		
+		let y = (string1 as NSString).scoreAgainst(string2, fuzziness: fuzziness, options: o)
+		let z = string1.scoreAgainst(string2, fuzziness: fuzziness, options: options)
+		
+		t = t + "\(y) \t \(z)\n\n"
+		
+		return t
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		var t = ""
-		let f = 1.0
-		let b = "Melbourne Dingo Harry"
-		for s in stringsToTest {
-			t = t + "\(s) _scoreAgainst_ \(b)\n"
-			let y = (s as NSString).scoreAgainst(b, fuzziness: f, options: .None)
-			let z = s.scoreAgainst(b, fuzziness: f, options: .None)
-			
-			t = t + "\(y) \t \(z)\n\n"
-		}
+		let baseString = "Melbourne Dingo Harry"
 		
-		for s in stringsToTest {
-			t = t + "\(b) _scoreAgainst_ \(s)\n"
-			let y = (b as NSString).scoreAgainst(s, fuzziness: f, options: .None)
-			let z = b.scoreAgainst(s, fuzziness: f, options: .None)
-			
-			t = t + "\(y) \t \(z)\n\n"
+		let fuzzinessArray = [0.5, 1.0, 2.0]
+		let optionsArray = [
+			StringScoreOption.None,
+			StringScoreOption.FavorSmallerWords,
+			StringScoreOption.ReducedLongStringPenalty,
+			StringScoreOption.FavorSmallerWords | StringScoreOption.ReducedLongStringPenalty
+		]
+		for fuzziness in fuzzinessArray {
+			for option in optionsArray {
+				for string in stringsToTest {
+					t = t + testDisplayStringFor(string1: string, string2: baseString, fuzziness: fuzziness, options: option)
+					t = t + testDisplayStringFor(string1: baseString, string2: string, fuzziness: fuzziness, options: option)
+				}
+			}
 		}
 		
 		view.addSubview(textView)
