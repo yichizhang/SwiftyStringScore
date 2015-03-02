@@ -125,37 +125,24 @@ extension String {
 			return totalCharacterScore / stringLengthDouble
 		}
 		
-		otherStringScore = totalCharacterScore / otherStringLengthDouble
-		
 		if StringScoreOption.ReducedLongStringPenalty == (options & StringScoreOption.ReducedLongStringPenalty) {
-			// Reduce the penalty for longer words
-			
 			// FIXME: In the Objective-C version, the corresponding statement is:
 			// CGFloat percentageOfMatchedString = otherStringLength / stringLength;
-			// both otherStringLength and stringLength are NSIntegers, 
+			// both otherStringLength and stringLength are NSIntegers,
 			// therefore the result of percentageOfMatchedString is either 0.0 or 1.0
 			
 			//let percentageOfMatchedString = otherStringLengthDouble / stringLengthDouble
 			let percentageOfMatchedString = floor( otherStringLengthDouble / stringLengthDouble )
-			//
-			//
-			
-			let wordScore = otherStringScore * percentageOfMatchedString
-			finalScore = (wordScore + otherStringScore) / 2
+			finalScore = ( totalCharacterScore / otherStringLengthDouble * percentageOfMatchedString + totalCharacterScore / otherStringLengthDouble )
 		} else {
-			finalScore = ( (otherStringScore * (otherStringLengthDouble / stringLengthDouble)) + otherStringScore ) / 2
+			finalScore = ( totalCharacterScore / stringLengthDouble + totalCharacterScore / otherStringLengthDouble)
 		}
 		
-		finalScore = finalScore / fuzzies
+		finalScore = 0.5 * finalScore / fuzzies
 		
-		/*
-		if startOfStringBonus {
-			finalScore = min(finalScore + 0.15, 1.0)
-		}
-		*/
-		
-		if startOfStringBonus && finalScore + 0.15 < 1.0 {
-			finalScore += 0.15
+		let bonus = 0.15
+		if startOfStringBonus && finalScore < 1.0 - bonus {
+			finalScore += bonus
 		}
 		
 		return finalScore
