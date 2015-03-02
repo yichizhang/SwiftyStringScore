@@ -29,7 +29,7 @@ extension String {
 		return self.scoreAgainst(otherString, fuzziness: fuzziness, options: StringScoreOption.None)
 	}
 	func scoreAgainst(_otherString:String, fuzziness:Double?, options:StringScoreOption) -> Double {
-		let workingInvalidCharacterSet = NSCharacterSet.lowercaseLetterCharacterSet().mutableCopy() as! NSMutableCharacterSet
+		let workingInvalidCharacterSet = NSCharacterSet.lowercaseLetterCharacterSet().mutableCopy() as NSMutableCharacterSet
 		workingInvalidCharacterSet.formUnionWithCharacterSet(NSCharacterSet.uppercaseLetterCharacterSet())
 		workingInvalidCharacterSet.addCharactersInString(" ")
 		let invalidCharacterSet = workingInvalidCharacterSet.invertedSet
@@ -48,9 +48,9 @@ extension String {
 		}
 		
 		var totalCharacterScore = 0.0
-		let otherStringLengthInt = count(otherString)
-		let otherStringLength = Double(count(otherString))
-		let stringLength = Double(count(string))
+		let otherStringLengthInt = countElements(otherString)
+		let otherStringLengthDouble = Double(countElements(otherString))
+		let stringLengthDouble = Double(countElements(string))
 		var startOfStringBonus = false
 		var otherStringScore = 0.0
 		var fuzzies = 1.0
@@ -121,18 +121,18 @@ extension String {
 		
 		if StringScoreOption.FavorSmallerWords == options & StringScoreOption.FavorSmallerWords {
 			// Weigh smaller words higher
-			return totalCharacterScore / stringLength
+			return totalCharacterScore / stringLengthDouble
 		}
 		
-		otherStringScore = totalCharacterScore / otherStringLength
+		otherStringScore = totalCharacterScore / otherStringLengthDouble
 		
 		if StringScoreOption.ReducedLongStringPenalty == options & StringScoreOption.ReducedLongStringPenalty {
 			// Reduce the penalty for longer words
-			let percentageOfMatchedString = otherStringLength / stringLength
+			let percentageOfMatchedString = otherStringLengthDouble / stringLengthDouble
 			let wordScore = otherStringScore * percentageOfMatchedString
 			finalScore = (wordScore + otherStringScore) / 2
 		} else {
-			finalScore = (otherStringScore * (otherStringLength / stringLength)) + otherStringScore / 2
+			finalScore = ( (otherStringScore * (otherStringLengthDouble / stringLengthDouble)) + otherStringScore ) / 2
 		}
 		
 		finalScore = finalScore / fuzzies
