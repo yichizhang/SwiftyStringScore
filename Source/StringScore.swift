@@ -120,16 +120,26 @@ extension String {
 			totalCharacterScore += characterScore
 		}
 		
-		if StringScoreOption.FavorSmallerWords == options & StringScoreOption.FavorSmallerWords {
+		if StringScoreOption.FavorSmallerWords == (options & StringScoreOption.FavorSmallerWords) {
 			// Weigh smaller words higher
 			return totalCharacterScore / stringLengthDouble
 		}
 		
 		otherStringScore = totalCharacterScore / otherStringLengthDouble
 		
-		if StringScoreOption.ReducedLongStringPenalty == options & StringScoreOption.ReducedLongStringPenalty {
+		if StringScoreOption.ReducedLongStringPenalty == (options & StringScoreOption.ReducedLongStringPenalty) {
 			// Reduce the penalty for longer words
-			let percentageOfMatchedString = otherStringLengthDouble / stringLengthDouble
+			
+			// FIXME: In the Objective-C version, the corresponding statement is:
+			// CGFloat percentageOfMatchedString = otherStringLength / stringLength;
+			// both otherStringLength and stringLength are NSIntegers, 
+			// therefore the result of percentageOfMatchedString is either 0.0 or 1.0
+			
+			//let percentageOfMatchedString = otherStringLengthDouble / stringLengthDouble
+			let percentageOfMatchedString = floor( otherStringLengthDouble / stringLengthDouble )
+			//
+			//
+			
 			let wordScore = otherStringScore * percentageOfMatchedString
 			finalScore = (wordScore + otherStringScore) / 2
 		} else {

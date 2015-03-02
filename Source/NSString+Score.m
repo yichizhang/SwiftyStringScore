@@ -118,6 +118,7 @@
     
     if(NSStringScoreOptionReducedLongStringPenalty == (options & NSStringScoreOptionReducedLongStringPenalty)){
         // Reduce the penalty for longer words
+		// FIXME: Should percentageOfMatchedString be either 0.0 or 1.0?
         CGFloat percentageOfMatchedString = otherStringLength / stringLength;
         CGFloat wordScore = otherStringScore * percentageOfMatchedString;
         finalScore = (wordScore + otherStringScore) / 2;

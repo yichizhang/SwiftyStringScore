@@ -25,10 +25,24 @@ class ViewController: UIViewController {
 	func testDisplayStringFor(#string1:String, string2:String, fuzziness:Double, options:StringScoreOption) -> String {
 		
 		var t = "fuzziness = \(fuzziness); options = \(options.rawValue)\n\(string1) AGAINST \(string2)\n"
-		var o = NSStringScoreOption(rawValue: options.rawValue)
+		var o = NSStringScoreOption.allZeros
+		
+		if StringScoreOption.FavorSmallerWords == (options & StringScoreOption.FavorSmallerWords) {
+			o = o | NSStringScoreOption.FavorSmallerWords
+		}
+		if StringScoreOption.ReducedLongStringPenalty == (options & StringScoreOption.ReducedLongStringPenalty) {
+			o = o | NSStringScoreOption.ReducedLongStringPenalty
+		}
 		
 		let y = (string1 as NSString).scoreAgainst(string2, fuzziness: fuzziness, options: o)
 		let z = string1.scoreAgainst(string2, fuzziness: fuzziness, options: options)
+		
+		let resultEqual = ( abs(Double(y) - z) < 0.00001 )
+		
+		
+		if !resultEqual {
+			t += "\nNOT EQUAL!\nNOT EQUAL!\n"
+		}
 		
 		t = t + "\(y) \t \(z)\n\n"
 		
@@ -42,7 +56,7 @@ class ViewController: UIViewController {
 		var t = ""
 		let baseString = "Melbourne Dingo Harry"
 		
-		let fuzzinessArray = [0.5, 1.0, 2.0]
+		let fuzzinessArray = [0.5, 0.7, 1.0]
 		let optionsArray = [
 			StringScoreOption.None,
 			StringScoreOption.FavorSmallerWords,
