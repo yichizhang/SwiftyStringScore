@@ -23,7 +23,7 @@ extension String {
 		if self == word { return 1 }
 		
 		//if it's not a perfect match and is empty return 0
-		if word == "" { return 0 }
+		if word.isEmpty || self.isEmpty { return 0 }
 		
 		var
 		runningScore = 0.0,
