@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1214516F1AA8617B002BF297 /* StringScore_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214516E1AA8617B002BF297 /* StringScore_new.swift */; };
 		12833C301A97A00D00440F55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12833C2F1A97A00C00440F55 /* AppDelegate.swift */; };
 		12833C321A97A00D00440F55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12833C311A97A00D00440F55 /* ViewController.swift */; };
 		12833C351A97A00D00440F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12833C331A97A00D00440F55 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1214516E1AA8617B002BF297 /* StringScore_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringScore_new.swift; sourceTree = "<group>"; };
 		12833C2A1A97A00C00440F55 /* StringScoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StringScoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12833C2E1A97A00C00440F55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12833C2F1A97A00C00440F55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				12833C521A97A0C400440F55 /* NSString+Score.h */,
 				12833C531A97A0C400440F55 /* NSString+Score.m */,
 				12833C591A97A2FF00440F55 /* StringScore.swift */,
+				1214516E1AA8617B002BF297 /* StringScore_new.swift */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -233,6 +236,7 @@
 			files = (
 				12833C541A97A0C400440F55 /* NSString+Score.m in Sources */,
 				12833C321A97A00D00440F55 /* ViewController.swift in Sources */,
+				1214516F1AA8617B002BF297 /* StringScore_new.swift in Sources */,
 				12833C301A97A00D00440F55 /* AppDelegate.swift in Sources */,
 				12833C5A1A97A2FF00440F55 /* StringScore.swift in Sources */,
 			);
