@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CustomInputViewController.swift
 //  StringScoreDemo
 //
 //  Created by YICHI ZHANG on 21/02/2015.
@@ -8,12 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate {
+class CustomInputViewController: UIViewController, UITextViewDelegate {
 	
 	@IBOutlet weak var sourceTextView: UITextView!
 	@IBOutlet weak var searchTextField: UITextField!
 	@IBOutlet weak var fuzzinessSlider: UISlider!
 	@IBOutlet weak var resultLabel: UILabel!
+	
+	func commonInit(){
+		self.title = "Custom Input"
+		self.tabBarItem = UITabBarItem(title: self.title, image: DemoStyleKit.imageOf(string: "B"), tag: 1)
+	}
+	
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+		
+		commonInit()
+	}
+	
+	required init(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		commonInit()
+	}
+	
+	override init() {
+		super.init()
+		commonInit()
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -54,7 +75,7 @@ class ViewController: UIViewController, UITextViewDelegate {
 		let searchText = searchTextField.text
 		
 		let score = sourceText.score(word: searchText, fuzziness: Double(fuzzinessSlider.value))
-		resultLabel.text = NSString(format: "%.3f", score)
+		resultLabel.text = score.yz_toString()
 	}
 	
 	// MARK: UITextViewDelegate
