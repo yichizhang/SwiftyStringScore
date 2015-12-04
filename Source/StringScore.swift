@@ -18,7 +18,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 import Foundation
 
 extension String {
-	func score(#word:String, fuzziness:Double? = nil) -> Double {
+	func score(word:String, fuzziness:Double? = nil) -> Double {
 		// If the string is equal to the word, perfect match.
 		if self == word { return 1 }
 		
@@ -31,9 +31,9 @@ extension String {
 		finalScore = 0.0,
 		string = self,
 		lString = string.lowercaseString,
-		strLength = countElements(string),
+		strLength = string.characters.count,
 		lWord = word.lowercaseString,
-		wordLength = countElements(word),
+		wordLength = word.characters.count,
 		idxOf:String.Index!,
 		startAt = lString.startIndex,
 		fuzzies = 1.0,
@@ -50,8 +50,8 @@ extension String {
 			// Find next first case-insensitive match of word's i-th character.
 			// The search in "string" begins at "startAt".
 			if let range = lString.rangeOfString(
-				String( lWord[advance(lWord.startIndex, i)] as Character ),
-				options: nil,
+				String( lWord[lWord.startIndex.advancedBy(i)] as Character ),
+				options: NSStringCompareOptions.CaseInsensitiveSearch,
 				range: Range<String.Index>( start: startAt, end: lString.endIndex),
 				locale: nil
 			){
@@ -66,7 +66,7 @@ extension String {
 					// Acronym Bonus
 					// Weighing Logic: Typing the first character of an acronym is as if you
 					// preceded it with two perfect character matches.
-					if string[advance(idxOf, -1)] == " " { charScore += 0.8 }
+					if string[idxOf.advancedBy(-1)] == " " { charScore += 0.8 }
 				}
 			} else {
 				// Character not found.
@@ -80,13 +80,13 @@ extension String {
 			}
 			
 			// Same case bonus.
-			if ( string[idxOf] == word[advance(word.startIndex, i)] ) {
+			if ( string[idxOf] == word[word.startIndex.advancedBy(i)] ) {
 				charScore += 0.1
 			}
 			
 			// Update scores and startAt position for next round of indexOf
 			runningScore += charScore
-			startAt = advance(idxOf, 1)
+			startAt = idxOf.advancedBy(1)
 		}
 		
 		// Reduce penalty for longer strings.
