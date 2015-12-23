@@ -16,7 +16,6 @@
 		12833C461A97A00D00440F55 /* StringScoreDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12833C451A97A00D00440F55 /* StringScoreDemoTests.swift */; };
 		12FDCBF21AA8B07300993082 /* DemoTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FDCBF11AA8B07300993082 /* DemoTestViewController.swift */; };
 		12FDCBF71AA8D9C500993082 /* DemoSearchTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FDCBF61AA8D9C500993082 /* DemoSearchTableController.swift */; };
-		12FDCBFA1AA8DB7900993082 /* name_list.txt in Sources */ = {isa = PBXBuildFile; fileRef = 12FDCBF81AA8DB7900993082 /* name_list.txt */; };
 		12FDCBFB1AA8DE6900993082 /* name_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = 12FDCBF81AA8DB7900993082 /* name_list.txt */; };
 		12FDCBFD1AA8EE5400993082 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FDCBFC1AA8EE5400993082 /* Extensions.swift */; };
 		12FDCBFF1AA8F10900993082 /* DemoStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FDCBFE1AA8F10900993082 /* DemoStyleKit.swift */; };
@@ -186,7 +185,9 @@
 		12833C221A97A00C00440F55 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "YICHI ZHANG";
 				TargetAttributes = {
 					12833C291A97A00C00440F55 = {
@@ -248,7 +249,6 @@
 				12FDCBF21AA8B07300993082 /* DemoTestViewController.swift in Sources */,
 				12FDCBFF1AA8F10900993082 /* DemoStyleKit.swift in Sources */,
 				12FDCBF71AA8D9C500993082 /* DemoSearchTableController.swift in Sources */,
-				12FDCBFA1AA8DB7900993082 /* name_list.txt in Sources */,
 				12833C301A97A00D00440F55 /* AppDelegate.swift in Sources */,
 				12FDCBFD1AA8EE5400993082 /* Extensions.swift in Sources */,
 			);
@@ -313,6 +313,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -380,6 +381,7 @@
 				INFOPLIST_FILE = StringScoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yichizhang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "StringScoreDemo/Bridging-Header.h";
 			};
@@ -392,6 +394,7 @@
 				INFOPLIST_FILE = StringScoreDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yichizhang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "StringScoreDemo/Bridging-Header.h";
 			};
@@ -411,6 +414,7 @@
 				);
 				INFOPLIST_FILE = StringScoreDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yichizhang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StringScoreDemo.app/StringScoreDemo";
 			};
@@ -426,6 +430,7 @@
 				);
 				INFOPLIST_FILE = StringScoreDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yichizhang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StringScoreDemo.app/StringScoreDemo";
 			};

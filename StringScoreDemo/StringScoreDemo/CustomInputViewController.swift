@@ -26,16 +26,11 @@ class CustomInputViewController: UIViewController, UITextViewDelegate {
 		commonInit()
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		commonInit()
 	}
-	
-	override init() {
-		super.init()
-		commonInit()
-	}
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
@@ -71,11 +66,10 @@ class CustomInputViewController: UIViewController, UITextViewDelegate {
 	
 	// MARK: Update
 	func updateStringScore() {
-		let sourceText = sourceTextView.text
-		let searchText = searchTextField.text
-		
-		let score = sourceText.score(word: searchText, fuzziness: Double(fuzzinessSlider.value))
-		resultLabel.text = score.yz_toString()
+		if let sourceText = sourceTextView.text, searchText = searchTextField.text {
+			let score = sourceText.score(searchText, fuzziness: Double(fuzzinessSlider.value))
+			resultLabel.text = score.yz_toString()
+		}
 	}
 	
 	// MARK: UITextViewDelegate

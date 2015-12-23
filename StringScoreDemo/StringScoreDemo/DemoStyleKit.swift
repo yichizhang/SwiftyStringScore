@@ -29,14 +29,14 @@ public class DemoStyleKit : NSObject {
 	
 	//// Drawing Methods
 	
-	public class func draw(#string:String) {
+	public class func draw(string string:String) {
 		//// General Declarations
 		let context = UIGraphicsGetCurrentContext()
 		
 		//// Text Drawing
 		let textRect = CGRectMake(0, 0, 25, 25)
-		var textTextContent = NSString(string: string)
-		let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+		let textTextContent = NSString(string: string)
+		let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
 		textStyle.alignment = NSTextAlignment.Center
 		
 		let textFontAttributes = [NSFontAttributeName: DemoStyleKit.mainFont, NSForegroundColorAttributeName: UIColor.blackColor(), NSParagraphStyleAttributeName: textStyle]
@@ -50,7 +50,7 @@ public class DemoStyleKit : NSObject {
 	
 	//// Generated Images
 	
-	public class func imageOf(#string:String) -> UIImage {
+	public class func imageOf(string string:String) -> UIImage {
 		if let image = Cache.imageDict[string] {
 			return image
 		}
