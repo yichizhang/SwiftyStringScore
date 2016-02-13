@@ -18,7 +18,7 @@ class DemoSearchTableController : UITableViewController, UISearchBarDelegate, UI
 				if let string = NSString(data: data, encoding: NSUTF8StringEncoding) as? String {
 					var arr = string.componentsSeparatedByString("\n")
 					
-					arr.sort { (a, b) -> Bool in
+					arr.sortInPlace { (a, b) -> Bool in
 						return a < b
 					}
 					return arr
@@ -45,13 +45,8 @@ class DemoSearchTableController : UITableViewController, UISearchBarDelegate, UI
 		commonInit()
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		commonInit()
-	}
-	
-	override init() {
-		super.init()
 		commonInit()
 	}
 
@@ -131,24 +126,24 @@ class DemoSearchTableController : UITableViewController, UISearchBarDelegate, UI
 	// MARK: UISearchResultsUpdating
 	
 	func updateSearchResultsForSearchController(searchController: UISearchController) {
-		
-		let searchText = searchController.searchBar.text
-		var resultArray: Array<NameAndScoreTuple> = Array()
-		for name in dataSourceArray {
-			let score = name.score(word: searchText)
+		if let searchText = searchController.searchBar.text {
+			var resultArray: Array<NameAndScoreTuple> = Array()
+			for name in dataSourceArray {
+				let score = name.score(searchText)
+				
+				let t = (name: name, score: score)
+				resultArray.append(t)
+			}
 			
-			let t = (name: name, score: score)
-			resultArray.append(t)
+			resultArray.sortInPlace { (a, b) -> Bool in
+				a.score > b.score
+			}
+			
+			// Hand over the filtered results to our search results table.
+			let resultsController = searchController.searchResultsController as! ResultsTableController
+			resultsController.searchResultArray = resultArray
+			resultsController.tableView.reloadData()
 		}
-		
-		resultArray.sort { (a, b) -> Bool in
-			a.score > b.score
-		}
-		
-		// Hand over the filtered results to our search results table.
-		let resultsController = searchController.searchResultsController as ResultsTableController
-		resultsController.searchResultArray = resultArray
-		resultsController.tableView.reloadData()
 	}
 }
 

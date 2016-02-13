@@ -35,16 +35,11 @@ class DemoTestViewController: UIViewController {
 		commonInit()
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		commonInit()
 	}
 	
-	override init() {
-		super.init()
-		commonInit()
-	}
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
@@ -73,14 +68,14 @@ class DemoTestViewController: UIViewController {
 		
 		view.addSubview(textView)
 		textView.text = t
-		
-		let searchPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-		let documentPath = searchPaths[0] as String
-		let p = documentPath.stringByAppendingPathComponent("33333.txt")
-		
-		t.writeToFile(p, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-		
-		println(p)
+
+		do {
+			let documentsURL = try NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+			let p = documentsURL.URLByAppendingPathComponent("33333.txt")
+			try t.writeToURL(p, atomically: true, encoding: NSUTF8StringEncoding)
+		} catch let error as NSError {
+			print(error)
+		}
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -88,12 +83,12 @@ class DemoTestViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-	func testDisplayStringFor(#string:String, word:String, fuzziness:Double? = nil) -> String {
+	func testDisplayStringFor(string string:String, word:String, fuzziness:Double? = nil) -> String {
 		
 		var t = ""
 		
 		var z = 0.0
-		z = string.score(word: word, fuzziness: fuzziness)
+		z = string.score(word, fuzziness: fuzziness)
 		
 		t = t + "\"\(string)\".score(word: \"\(word)\""
 		if let fuzziness = fuzziness {
