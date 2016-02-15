@@ -84,12 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-StringScoreDemoTests/StringScore_Swift.framework"
-  install_framework "Pods-StringScoreDemoTests/Nimble.framework"
-  install_framework "Pods-StringScoreDemoTests/Quick.framework"
+  install_framework "Pods-StringScoreDemo/StringScore_Swift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-StringScoreDemoTests/StringScore_Swift.framework"
-  install_framework "Pods-StringScoreDemoTests/Nimble.framework"
-  install_framework "Pods-StringScoreDemoTests/Quick.framework"
+  install_framework "Pods-StringScoreDemo/StringScore_Swift.framework"
 fi

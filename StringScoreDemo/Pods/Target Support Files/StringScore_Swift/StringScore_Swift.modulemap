@@ -1,0 +1,6 @@
+framework module StringScore_Swift {
+  umbrella header "StringScore_Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

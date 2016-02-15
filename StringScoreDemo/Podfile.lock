@@ -1,13 +1,20 @@
 PODS:
   - Nimble (3.0.0)
   - Quick (0.8.0)
+  - StringScore_Swift (0.1.0)
 
 DEPENDENCIES:
   - Nimble (= 3.0.0)
   - Quick (~> 0.8.0)
+  - StringScore_Swift (from `../`)
+
+EXTERNAL SOURCES:
+  StringScore_Swift:
+    :path: ../
 
 SPEC CHECKSUMS:
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+  StringScore_Swift: 53bdf1e50bb217d9bbc2e329511bbda2fd6424a8
 
 COCOAPODS: 0.39.0
