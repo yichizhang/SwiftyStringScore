@@ -68,7 +68,7 @@ public extension String
             if let range = lString.rangeOfString(
             String(lWord[lWord.startIndex.advancedBy(i)] as Character),
             options: NSStringCompareOptions.CaseInsensitiveSearch,
-            range: Range<String.Index>(start: startAt, end: lString.endIndex),
+            range: Range<String.Index>(startAt..<lString.endIndex),
             locale: nil
             ) {
                 // start index of word's i-th character in string.

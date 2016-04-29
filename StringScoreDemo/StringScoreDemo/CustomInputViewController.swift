@@ -46,10 +46,10 @@ class CustomInputViewController: UIViewController, UITextViewDelegate
         sourceTextView.text = "Alice has a Dingo. 😄 😅 😆 Alice lives in Wonderland."
         sourceTextView.delegate = self
 
-        searchTextField.addTarget(self, action: "controlValueChanged:", forControlEvents: UIControlEvents.EditingChanged)
-        fuzzinessSlider.addTarget(self, action: "controlValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        searchTextField.addTarget(self, action: #selector(controlValueChanged(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        fuzzinessSlider.addTarget(self, action: #selector(controlValueChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "backgroundTouched:"))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTouched(_:))))
 
         updateStringScore()
     }
