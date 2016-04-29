@@ -7,7 +7,7 @@
 //
 
 import UIKit
-@testable import StringScore_Swift
+import StringScore_Swift
 
 class DemoTestViewController: UIViewController
 {

@@ -17,7 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 import Foundation
 
-extension String {
+public extension String {
 	func score(word:String, fuzziness:Double? = nil) -> Double {
 		// If the string is equal to the word, perfect match.
 		if self == word { return 1 }
