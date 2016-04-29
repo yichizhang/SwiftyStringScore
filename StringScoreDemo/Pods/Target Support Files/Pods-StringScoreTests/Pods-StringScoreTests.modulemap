@@ -1,0 +1,6 @@
+framework module Pods_StringScoreTests {
+  umbrella header "Pods-StringScoreTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

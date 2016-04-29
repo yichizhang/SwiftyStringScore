@@ -1,11 +1,16 @@
 import Foundation
 
-struct StringScoreTestCase
+struct StringScoreTestCase: CustomStringConvertible
 {
     var text: String!
     var searchString: String!
     var fuzziness: Double?
     var expectedScore: Double!
+
+    var description: String {
+        let fuzzinessString = fuzziness == nil ? "nil" : "\(fuzziness!)"
+        return "Searching \"\(searchString)\" in \"\(text)\" with fuzziness \(fuzzinessString)"
+    }
 }
 
 class StringScoreTestCaseManager

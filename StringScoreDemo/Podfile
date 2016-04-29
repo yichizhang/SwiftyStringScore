@@ -5,7 +5,7 @@ target 'StringScoreDemo', :exclusive => true do
   pod 'StringScore_Swift', :path => '../'
 end
 
-target 'StringScoreDemoTests', :exclusive => true do
+target 'StringScoreTests', :exclusive => true do
   pod 'StringScore_Swift', :path => '../'
 
   pod 'Quick'
