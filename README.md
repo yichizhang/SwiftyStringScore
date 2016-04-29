@@ -6,8 +6,6 @@ StringScore_Swift is a Swift library which provides fast fuzzy string matching/s
 
 ![Screenshot](https://raw.githubusercontent.com/yichizhang/StringScore_Swift/master/Screenshots/screenshot2.png)
 
-![Screenshot](https://raw.githubusercontent.com/yichizhang/StringScore_Swift/master/Screenshots/screenshot3.png)
-
 ## Examples
 
 ```
