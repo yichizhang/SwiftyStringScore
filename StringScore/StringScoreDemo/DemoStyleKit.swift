@@ -19,7 +19,7 @@ public class DemoStyleKit: NSObject
 
     class var mainFont: UIFont
     {
-        return UIFont(name: "HelveticaNeue-LightItalic", size: 20)!
+        return UIFont(name: "HelveticaNeue-Bold", size: 20)!
     }
 
     //// Cache
