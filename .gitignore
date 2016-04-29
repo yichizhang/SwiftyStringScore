@@ -1,8 +1,5 @@
-# OS X
-.DS_Store
-._*
-
 # Xcode
+#
 build/
 *.pbxuser
 !default.pbxuser
@@ -14,21 +11,28 @@ build/
 !default.perspectivev3
 xcuserdata
 *.xccheckout
-profile
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
+*.xcuserstate
 
-# Bundler
-.bundle
-
-Carthage
+# CocoaPods
+#
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
-# 
-# Note: if you ignore the Pods directory, make sure to uncomment
-# `pod install` in .travis.yml
 #
-# Pods/
+#Pods/
+
+# OS X Temporary files
+#
+._*
+.DS_Store
+*.swp
+*.lock
+profile
+
+# AppCode
+#
+.idea/
