@@ -1,4 +1,3 @@
-//
 //  Based on string_score 0.1.21 by Joshaven Potter.
 //  https://github.com/joshaven/string_score/
 //
@@ -29,7 +28,7 @@ import Foundation
 
 public extension String
 {
-    func score(word: String, fuzziness: Double? = nil) -> Double
+    func score(_ word: String, fuzziness: Double? = nil) -> Double
     {
         // If the string is equal to the word, perfect match.
         if self == word {
@@ -46,9 +45,9 @@ public extension String
         charScore = 0.0,
         finalScore = 0.0,
         string = self,
-        lString = string.lowercaseString,
+        lString = string.lowercased(),
         strLength = string.characters.count,
-        lWord = word.lowercaseString,
+        lWord = word.lowercased(),
         wordLength = word.characters.count,
         idxOf: String.Index!,
         startAt = lString.startIndex,
@@ -65,14 +64,14 @@ public extension String
         for i in 0 ..< wordLength {
             // Find next first case-insensitive match of word's i-th character.
             // The search in "string" begins at "startAt".
-            if let range = lString.rangeOfString(
-            String(lWord[lWord.startIndex.advancedBy(i)] as Character),
-            options: NSStringCompareOptions.CaseInsensitiveSearch,
+            if let range = lString.range(
+            of: String(lWord[lWord.characters.index(lWord.startIndex, offsetBy: i)] as Character),
+            options: NSString.CompareOptions.caseInsensitive,
             range: Range<String.Index>(startAt..<lString.endIndex),
             locale: nil
             ) {
                 // start index of word's i-th character in string.
-                idxOf = range.startIndex
+                idxOf = range.lowerBound
                 if startAt == idxOf {
                     // Consecutive letter & start-of-string Bonus
                     charScore = 0.7
@@ -83,7 +82,7 @@ public extension String
                     // Acronym Bonus
                     // Weighing Logic: Typing the first character of an acronym is as if you
                     // preceded it with two perfect character matches.
-                    if string[idxOf.advancedBy(-1)] == " " {
+                    if string[string.index(idxOf, offsetBy: -1)] == " " {
                         charScore += 0.8
                     }
                 }
@@ -101,13 +100,13 @@ public extension String
             }
 
             // Same case bonus.
-            if (string[idxOf] == word[word.startIndex.advancedBy(i)]) {
+            if (string[idxOf] == word[word.characters.index(word.startIndex, offsetBy: i)]) {
                 charScore += 0.1
             }
 
             // Update scores and startAt position for next round of indexOf
             runningScore += charScore
-            startAt = idxOf.advancedBy(1)
+            startAt = string.index(idxOf, offsetBy: 1)
         }
 
         // Reduce penalty for longer strings.
