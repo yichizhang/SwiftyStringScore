@@ -15,19 +15,17 @@ typealias NameAndScoreTuple = (name:String, score:Double)
 class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating
 {
     lazy var dataSourceArray: [String] = {
-        if let path = Bundle.main.path(forResource: "name_list", ofType: "txt") {
-            if let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
-                if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String {
-                    var arr = string.components(separatedBy: "\n")
+        if let path = Bundle.main.path(forResource: "name_list", ofType: "txt"),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+            let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
+        {
+            var arr = string.components(separatedBy: "\n")
 
-                    arr.sort
-                    {
-                        (a, b) -> Bool in
-                        return a < b
-                    }
-                    return arr
-                }
+            arr.sort {
+                (a, b) -> Bool in
+                return a < b
             }
+            return arr
         }
         return []
     }()
@@ -114,32 +112,6 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
         searchBar.resignFirstResponder()
     }
 
-    // MARK: UISearchControllerDelegate
-    func presentSearchController(_ searchController: UISearchController)
-    {
-        //NSLog(__FUNCTION__)
-    }
-
-    func willPresentSearchController(_ searchController: UISearchController)
-    {
-        //NSLog(__FUNCTION__)
-    }
-
-    func didPresentSearchController(_ searchController: UISearchController)
-    {
-        //NSLog(__FUNCTION__)
-    }
-
-    func willDismissSearchController(_ searchController: UISearchController)
-    {
-        //NSLog(__FUNCTION__)
-    }
-
-    func didDismissSearchController(_ searchController: UISearchController)
-    {
-        //NSLog(__FUNCTION__)
-    }
-
     // MARK: UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController)
@@ -167,10 +139,8 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
     }
 }
 
-
 class ResultsTableController: UITableViewController, UISearchControllerDelegate
 {
-
     var searchResultArray: [NameAndScoreTuple]!
 
     let defaultCellReuseIdentifier = "CellId"

@@ -16,7 +16,6 @@ import UIKit
 
 open class DemoStyleKit: NSObject
 {
-
     class var mainFont: UIFont
     {
         return UIFont(name: "HelveticaNeue-Bold", size: 20)!
@@ -70,5 +69,4 @@ open class DemoStyleKit: NSObject
 
         return image
     }
-
 }
