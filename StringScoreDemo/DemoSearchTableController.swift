@@ -15,12 +15,12 @@ typealias NameAndScoreTuple = (name:String, score:Double)
 class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating
 {
     lazy var dataSourceArray: [String] = {
-        if let path = NSBundle.mainBundle().pathForResource("name_list", ofType: "txt") {
-            if let data = NSData(contentsOfFile: path) {
-                if let string = NSString(data: data, encoding: NSUTF8StringEncoding) as? String {
-                    var arr = string.componentsSeparatedByString("\n")
+        if let path = Bundle.main.path(forResource: "name_list", ofType: "txt") {
+            if let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
+                if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String {
+                    var arr = string.components(separatedBy: "\n")
 
-                    arr.sortInPlace
+                    arr.sort
                     {
                         (a, b) -> Bool in
                         return a < b
@@ -44,7 +44,7 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
         self.tabBarItem = UITabBarItem(title: self.title, image: DemoStyleKit.imageOf(string: "A"), tag: 0)
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
@@ -84,65 +84,65 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
 
 
 
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: defaultCellReuseIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellReuseIdentifier)
     }
 
     // MARK: Table View Data Source and Delegate methods
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return dataSourceArray.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: defaultCellReuseIdentifier)
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: defaultCellReuseIdentifier)
 
-        cell.textLabel?.text = dataSourceArray[indexPath.row]
+        cell.textLabel?.text = dataSourceArray[(indexPath as NSIndexPath).row]
         cell.detailTextLabel?.text = ""
 
         return cell
     }
 
     // MARK: UISearchBarDelegate
-    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         searchBar.resignFirstResponder()
     }
 
     // MARK: UISearchControllerDelegate
-    func presentSearchController(searchController: UISearchController)
+    func presentSearchController(_ searchController: UISearchController)
     {
         //NSLog(__FUNCTION__)
     }
 
-    func willPresentSearchController(searchController: UISearchController)
+    func willPresentSearchController(_ searchController: UISearchController)
     {
         //NSLog(__FUNCTION__)
     }
 
-    func didPresentSearchController(searchController: UISearchController)
+    func didPresentSearchController(_ searchController: UISearchController)
     {
         //NSLog(__FUNCTION__)
     }
 
-    func willDismissSearchController(searchController: UISearchController)
+    func willDismissSearchController(_ searchController: UISearchController)
     {
         //NSLog(__FUNCTION__)
     }
 
-    func didDismissSearchController(searchController: UISearchController)
+    func didDismissSearchController(_ searchController: UISearchController)
     {
         //NSLog(__FUNCTION__)
     }
 
     // MARK: UISearchResultsUpdating
 
-    func updateSearchResultsForSearchController(searchController: UISearchController)
+    func updateSearchResults(for searchController: UISearchController)
     {
         if let searchText = searchController.searchBar.text {
             var resultArray: Array<NameAndScoreTuple> = Array()
@@ -153,7 +153,7 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
                 resultArray.append(t)
             }
 
-            resultArray.sortInPlace
+            resultArray.sort
             {
                 (a, b) -> Bool in
                 a.score > b.score
@@ -179,25 +179,25 @@ class ResultsTableController: UITableViewController, UISearchControllerDelegate
     {
         super.viewDidLoad()
 
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: defaultCellReuseIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellReuseIdentifier)
     }
 
     // MARK: Table View Data Source and Delegate methods
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return searchResultArray.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: defaultCellReuseIdentifier)
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: defaultCellReuseIdentifier)
 
-        let t = searchResultArray[indexPath.row]
+        let t = searchResultArray[(indexPath as NSIndexPath).row]
 
         cell.textLabel?.text = t.name
         cell.detailTextLabel?.text = t.score.yz_toString()

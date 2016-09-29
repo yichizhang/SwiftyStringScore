@@ -11,7 +11,6 @@ import StringScore_Swift
 
 class CustomInputViewController: UIViewController, UITextViewDelegate
 {
-
     @IBOutlet weak var sourceTextView: UITextView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var fuzzinessSlider: UISlider!
@@ -23,7 +22,7 @@ class CustomInputViewController: UIViewController, UITextViewDelegate
         self.tabBarItem = UITabBarItem(title: self.title, image: DemoStyleKit.imageOf(string: "B"), tag: 1)
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
@@ -46,8 +45,8 @@ class CustomInputViewController: UIViewController, UITextViewDelegate
         sourceTextView.text = "Alice has a Dingo. 😄 😅 😆 Alice lives in Wonderland."
         sourceTextView.delegate = self
 
-        searchTextField.addTarget(self, action: #selector(controlValueChanged(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        fuzzinessSlider.addTarget(self, action: #selector(controlValueChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        searchTextField.addTarget(self, action: #selector(controlValueChanged(_:)), for: UIControlEvents.editingChanged)
+        fuzzinessSlider.addTarget(self, action: #selector(controlValueChanged(_:)), for: UIControlEvents.valueChanged)
 
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTouched(_:))))
 
@@ -61,13 +60,13 @@ class CustomInputViewController: UIViewController, UITextViewDelegate
     }
 
     // MARK: Slider value changed
-    func controlValueChanged(sender: AnyObject)
+    func controlValueChanged(_ sender: AnyObject)
     {
         updateStringScore()
     }
 
     // MARK: Background touched
-    func backgroundTouched(sender: AnyObject)
+    func backgroundTouched(_ sender: AnyObject)
     {
         sourceTextView.resignFirstResponder()
         searchTextField.resignFirstResponder()
@@ -76,14 +75,14 @@ class CustomInputViewController: UIViewController, UITextViewDelegate
     // MARK: Update
     func updateStringScore()
     {
-        if let sourceText = sourceTextView.text, searchText = searchTextField.text {
+        if let sourceText = sourceTextView.text, let searchText = searchTextField.text {
             let score = sourceText.score(searchText, fuzziness: Double(fuzzinessSlider.value))
             resultLabel.text = score.yz_toString()
         }
     }
 
     // MARK: UITextViewDelegate
-    func textViewDidChange(textView: UITextView)
+    func textViewDidChange(_ textView: UITextView)
     {
         updateStringScore()
     }
