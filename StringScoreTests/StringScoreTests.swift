@@ -21,7 +21,7 @@ class StringScoreTestSpec: QuickSpec
             for testCase in self.testCaseArray {
                 context(testCase.description, {
                     it("Returns correct score", closure: {
-                        let actualScore = testCase.text.score(testCase.searchString, fuzziness: testCase.fuzziness)
+                      let actualScore = testCase.text.score(word: testCase.searchString, fuzziness: testCase.fuzziness)
 
                         expect(actualScore).to(beCloseTo(testCase.expectedScore, within: self.precision))
                     })
