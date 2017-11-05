@@ -76,7 +76,7 @@ class CustomInputViewController: UIViewController, UITextViewDelegate
     func updateStringScore()
     {
         if let sourceText = sourceTextView.text, let searchText = searchTextField.text {
-            let score = sourceText.score(searchText, fuzziness: Double(fuzzinessSlider.value))
+            let score = sourceText.score(word: searchText, fuzziness: Double(fuzzinessSlider.value))
             resultLabel.text = score.yz_toString()
         }
     }
