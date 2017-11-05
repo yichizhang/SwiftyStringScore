@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import StringScore_Swift
+import SwiftyStringScore
 
 typealias NameAndScoreTuple = (name:String, score:Double)
 

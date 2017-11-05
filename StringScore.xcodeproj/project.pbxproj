@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		124BCAB21FAF6D85006DBD1B /* SwiftyStringScore.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C40F63F1CD48E3600E4A595 /* SwiftyStringScore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12833C301A97A00D00440F55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12833C2F1A97A00C00440F55 /* AppDelegate.swift */; };
 		12833C321A97A00D00440F55 /* CustomInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12833C311A97A00D00440F55 /* CustomInputViewController.swift */; };
 		12833C351A97A00D00440F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12833C331A97A00D00440F55 /* Main.storyboard */; };
@@ -16,10 +17,9 @@
 		12FDCBFB1AA8DE6900993082 /* name_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = 12FDCBF81AA8DB7900993082 /* name_list.txt */; };
 		12FDCBFD1AA8EE5400993082 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FDCBFC1AA8EE5400993082 /* Extensions.swift */; };
 		12FDCBFF1AA8F10900993082 /* DemoStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FDCBFE1AA8F10900993082 /* DemoStyleKit.swift */; };
-		2C40F6401CD48E3600E4A595 /* StringScore_Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C40F63F1CD48E3600E4A595 /* StringScore_Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2C40F6591CD48E9F00E4A595 /* StringScore_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C40F63D1CD48E3600E4A595 /* StringScore_Swift.framework */; };
+		2C40F6591CD48E9F00E4A595 /* SwiftyStringScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C40F63D1CD48E3600E4A595 /* SwiftyStringScore.framework */; };
 		2C40F65B1CD48ECC00E4A595 /* StringScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40F65A1CD48ECC00E4A595 /* StringScore.swift */; };
-		2C40F6691CD48FA100E4A595 /* StringScore_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C40F63D1CD48E3600E4A595 /* StringScore_Swift.framework */; };
+		2C40F6691CD48FA100E4A595 /* SwiftyStringScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C40F63D1CD48E3600E4A595 /* SwiftyStringScore.framework */; };
 		2C40F66F1CD4911D00E4A595 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C40F65C1CD48F6600E4A595 /* Quick.framework */; };
 		2C40F6701CD4911D00E4A595 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C40F65D1CD48F6600E4A595 /* Nimble.framework */; };
 		2C40F6721CD4913600E4A595 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C40F65C1CD48F6600E4A595 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -34,7 +34,7 @@
 			containerPortal = 12833C221A97A00C00440F55 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2C40F63C1CD48E3600E4A595;
-			remoteInfo = StringScore_Swift;
+			remoteInfo = SwiftyStringScore;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -65,8 +65,8 @@
 		12FDCBF81AA8DB7900993082 /* name_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = name_list.txt; sourceTree = "<group>"; };
 		12FDCBFC1AA8EE5400993082 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		12FDCBFE1AA8F10900993082 /* DemoStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoStyleKit.swift; sourceTree = "<group>"; };
-		2C40F63D1CD48E3600E4A595 /* StringScore_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StringScore_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C40F63F1CD48E3600E4A595 /* StringScore_Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringScore_Swift.h; sourceTree = "<group>"; };
+		2C40F63D1CD48E3600E4A595 /* SwiftyStringScore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyStringScore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C40F63F1CD48E3600E4A595 /* SwiftyStringScore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyStringScore.h; sourceTree = "<group>"; };
 		2C40F6411CD48E3600E4A595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C40F65A1CD48ECC00E4A595 /* StringScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringScore.swift; path = Source/StringScore.swift; sourceTree = SOURCE_ROOT; };
 		2C40F65C1CD48F6600E4A595 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C40F6591CD48E9F00E4A595 /* StringScore_Swift.framework in Frameworks */,
+				2C40F6591CD48E9F00E4A595 /* SwiftyStringScore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 			files = (
 				2C40F66F1CD4911D00E4A595 /* Quick.framework in Frameworks */,
 				2C40F6701CD4911D00E4A595 /* Nimble.framework in Frameworks */,
-				2C40F6691CD48FA100E4A595 /* StringScore_Swift.framework in Frameworks */,
+				2C40F6691CD48FA100E4A595 /* SwiftyStringScore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +113,7 @@
 				2C40F65D1CD48F6600E4A595 /* Nimble.framework */,
 				12833C2C1A97A00C00440F55 /* StringScoreDemo */,
 				2C496A461CD3752C00F1EAC0 /* StringScoreTests */,
-				2C40F63E1CD48E3600E4A595 /* StringScore_Swift */,
+				2C40F63E1CD48E3600E4A595 /* SwiftyStringScore */,
 				12833C2B1A97A00C00440F55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				12833C2A1A97A00C00440F55 /* StringScoreDemo.app */,
-				2C40F63D1CD48E3600E4A595 /* StringScore_Swift.framework */,
+				2C40F63D1CD48E3600E4A595 /* SwiftyStringScore.framework */,
 				2C40F6641CD48FA100E4A595 /* StringScoreTests.xctest */,
 			);
 			name = Products;
@@ -154,14 +154,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2C40F63E1CD48E3600E4A595 /* StringScore_Swift */ = {
+		2C40F63E1CD48E3600E4A595 /* SwiftyStringScore */ = {
 			isa = PBXGroup;
 			children = (
-				2C40F63F1CD48E3600E4A595 /* StringScore_Swift.h */,
-				2C40F65A1CD48ECC00E4A595 /* StringScore.swift */,
 				2C40F6411CD48E3600E4A595 /* Info.plist */,
+				2C40F63F1CD48E3600E4A595 /* SwiftyStringScore.h */,
+				2C40F65A1CD48ECC00E4A595 /* StringScore.swift */,
 			);
-			path = StringScore_Swift;
+			path = SwiftyStringScore;
 			sourceTree = "<group>";
 		};
 		2C496A461CD3752C00F1EAC0 /* StringScoreTests */ = {
@@ -181,7 +181,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C40F6401CD48E3600E4A595 /* StringScore_Swift.h in Headers */,
+				124BCAB21FAF6D85006DBD1B /* SwiftyStringScore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,9 +205,9 @@
 			productReference = 12833C2A1A97A00C00440F55 /* StringScoreDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2C40F63C1CD48E3600E4A595 /* StringScore_Swift */ = {
+		2C40F63C1CD48E3600E4A595 /* SwiftyStringScore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C40F64E1CD48E3600E4A595 /* Build configuration list for PBXNativeTarget "StringScore_Swift" */;
+			buildConfigurationList = 2C40F64E1CD48E3600E4A595 /* Build configuration list for PBXNativeTarget "SwiftyStringScore" */;
 			buildPhases = (
 				2C40F6381CD48E3600E4A595 /* Sources */,
 				2C40F6391CD48E3600E4A595 /* Frameworks */,
@@ -218,9 +218,9 @@
 			);
 			dependencies = (
 			);
-			name = StringScore_Swift;
-			productName = StringScore_Swift;
-			productReference = 2C40F63D1CD48E3600E4A595 /* StringScore_Swift.framework */;
+			name = SwiftyStringScore;
+			productName = SwiftyStringScore;
+			productReference = 2C40F63D1CD48E3600E4A595 /* SwiftyStringScore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2C40F6631CD48FA100E4A595 /* StringScoreTests */ = {
@@ -280,7 +280,7 @@
 			projectRoot = "";
 			targets = (
 				12833C291A97A00C00440F55 /* StringScoreDemo */,
-				2C40F63C1CD48E3600E4A595 /* StringScore_Swift */,
+				2C40F63C1CD48E3600E4A595 /* SwiftyStringScore */,
 				2C40F6631CD48FA100E4A595 /* StringScoreTests */,
 			);
 		};
@@ -349,7 +349,7 @@
 /* Begin PBXTargetDependency section */
 		2C40F66B1CD48FA100E4A595 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2C40F63C1CD48E3600E4A595 /* StringScore_Swift */;
+			target = 2C40F63C1CD48E3600E4A595 /* SwiftyStringScore */;
 			targetProxy = 2C40F66A1CD48FA100E4A595 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -495,11 +495,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = StringScore_Swift/Info.plist;
+				INFOPLIST_FILE = SwiftyStringScore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yichizhang.StringScore-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yichizhang.SwiftyStringScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -520,11 +520,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = StringScore_Swift/Info.plist;
+				INFOPLIST_FILE = SwiftyStringScore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yichizhang.StringScore-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yichizhang.SwiftyStringScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -590,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C40F64E1CD48E3600E4A595 /* Build configuration list for PBXNativeTarget "StringScore_Swift" */ = {
+		2C40F64E1CD48E3600E4A595 /* Build configuration list for PBXNativeTarget "SwiftyStringScore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C40F64F1CD48E3600E4A595 /* Debug */,

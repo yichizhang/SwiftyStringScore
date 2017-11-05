@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import StringScore_Swift
+import SwiftyStringScore
 
 class CustomInputViewController: UIViewController, UITextViewDelegate
 {
