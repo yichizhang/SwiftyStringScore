@@ -60,13 +60,13 @@ class CustomInputViewController: UIViewController, UITextViewDelegate
     }
 
     // MARK: Slider value changed
-    func controlValueChanged(_ sender: AnyObject)
+    @objc func controlValueChanged(_ sender: AnyObject)
     {
         updateStringScore()
     }
 
     // MARK: Background touched
-    func backgroundTouched(_ sender: AnyObject)
+    @objc func backgroundTouched(_ sender: AnyObject)
     {
         sourceTextView.resignFirstResponder()
         searchTextField.resignFirstResponder()
