@@ -58,8 +58,7 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-
+        
         resultsTableController = ResultsTableController()
 
         // We want to be the delegate for our filtered table so didSelectRowAtIndexPath(_:) is called for both tables.
@@ -69,7 +68,10 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
         searchController = UISearchController(searchResultsController: resultsTableController)
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        }
 
         searchController.delegate = self
         searchController.dimsBackgroundDuringPresentation = false // default is YES
@@ -79,8 +81,6 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
         // presentation semantics apply. Namely that presentation will walk up the view controller
         // hierarchy until it finds the root view controller or one that defines a presentation context.
         definesPresentationContext = true
-
-
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellReuseIdentifier)
     }
@@ -119,7 +119,7 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
         if let searchText = searchController.searchBar.text {
             var resultArray: Array<NameAndScoreTuple> = Array()
             for name in dataSourceArray {
-                let score = name.score(searchText)
+                let score = name.score(word: searchText)
 
                 let t = (name: name, score: score)
                 resultArray.append(t)
