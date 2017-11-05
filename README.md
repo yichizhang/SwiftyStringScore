@@ -1,10 +1,8 @@
-#StringScore_Swift
+# SwiftyStringScore
 
-StringScore_Swift is a Swift library which provides fast fuzzy string matching/scoring. Based on the [JavaScript library of the same name](https://github.com/joshaven/string_score), by [Joshaven Potter](https://github.com/joshaven).
+SwiftyStringScore (StringScore_Swift) is a Swift library which provides fast fuzzy string matching/scoring. Based on the [JavaScript library of the same name](https://github.com/joshaven/string_score), by [Joshaven Potter](https://github.com/joshaven).
 
-![Screenshot](https://raw.githubusercontent.com/yichizhang/StringScore_Swift/master/Screenshots/screenshot1.png)
-
-![Screenshot](https://raw.githubusercontent.com/yichizhang/StringScore_Swift/master/Screenshots/screenshot2.png)
+![Screenshot](https://raw.githubusercontent.com/yichizhang/SwiftyStringScore/master/Screenshots/screenshot1.png)
 
 ## Examples
 

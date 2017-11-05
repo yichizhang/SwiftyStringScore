@@ -1,7 +1,7 @@
 import UIKit
 import Quick
 import Nimble
-import StringScore_Swift
+import SwiftyStringScore
 
 class StringScoreTestSpec: QuickSpec
 {

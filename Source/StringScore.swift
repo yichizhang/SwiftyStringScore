@@ -27,10 +27,10 @@
 
 import Foundation
 
-public extension String
-{
-    func score(word: String, fuzziness: Double? = nil) -> Double
-    {
+public extension String {
+    
+    func score(word: String, fuzziness: Double? = nil) -> Double {
+        
         // If the string is equal to the word, perfect match.
         if self == word {
             return 1

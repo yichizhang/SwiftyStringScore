@@ -42,7 +42,7 @@ open class DemoStyleKit: NSObject
         let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.center
 
-        let textFontAttributes = [NSFontAttributeName: DemoStyleKit.mainFont, NSForegroundColorAttributeName: UIColor.black, NSParagraphStyleAttributeName: textStyle]
+        let textFontAttributes = [NSAttributedStringKey.font: DemoStyleKit.mainFont, NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: textStyle]
 
         let textTextHeight: CGFloat = textTextContent.boundingRect(with: CGSize(width: textRect.width, height: CGFloat.infinity), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: textFontAttributes, context: nil).size.height
         context?.saveGState()
