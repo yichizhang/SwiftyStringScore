@@ -21,6 +21,10 @@ struct TestCase: CustomStringConvertible {
 class TestCases {
   
   static var `default`: [TestCase] = [
+    TestCase(text: "", keyword: "", fz: nil, score: 1.0),
+    TestCase(text: "", keyword: "h", fz: nil, score: 0.0),
+    TestCase(text: "hello world", keyword: "", fz: nil, score: 0.0),
+    
     TestCase(text: "hello world", keyword: "axl", fz: nil, score: 0.0),
     TestCase(text: "hello world", keyword: "ow", fz: nil, score: 0.354545454545455),
     TestCase(text: "hello world", keyword: "e", fz: nil, score: 0.109090909090909),
