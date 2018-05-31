@@ -26,5 +26,17 @@ class StringScoreTestSpec: QuickSpec {
         })
       }
     }
+    
+    describe("score of") {
+      for testCase in TestCases.diacritics {
+        context(testCase.description, {
+          it("is \(testCase.score)", closure: {
+            let actualScore = testCase.text.score(word: testCase.keyword, fuzziness: testCase.fz)
+            
+            expect(actualScore).to(beCloseTo(testCase.score, within: self.precision))
+          })
+        })
+      }
+    }
   }
 }
