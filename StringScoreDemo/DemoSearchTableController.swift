@@ -17,7 +17,7 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
   lazy var dataSourceArray: [String] = {
     if let path = Bundle.main.path(forResource: "name_list", ofType: "txt"),
       let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
-      let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
+      let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
     {
       var arr = string.components(separatedBy: "\n")
       
