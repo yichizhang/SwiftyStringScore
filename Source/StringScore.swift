@@ -27,6 +27,18 @@
 
 import Foundation
 
+private extension String {
+  
+  func charAt(_ i: Int) -> Character {
+    let index = self.index(self.startIndex, offsetBy: i)
+    return self[index]
+  }
+  
+  func charStrAt(_ i: Int) -> String {
+    return String(charAt(i))
+  }
+}
+
 public extension String {
   
   func score(word: String, fuzziness: Double? = nil) -> Double {
@@ -67,14 +79,16 @@ public extension String {
       // Find next first case-insensitive match of word's i-th character.
       // The search in "string" begins at "startAt".
       
-      if let range = lString.range(of:
-        String(lWord[lWord.index(lWord.startIndex, offsetBy: i)] as Character),
-                                   options: NSString.CompareOptions.caseInsensitive,
-                                   range: Range<String.Index>(startAt..<lString.endIndex),
-                                   locale: nil
+      if let range = lString.range(
+        of: lWord.charStrAt(i),
+        options: [.caseInsensitive, .diacriticInsensitive],
+        range: Range<String.Index>(startAt..<lString.endIndex),
+        locale: nil
         ) {
+        
         // start index of word's i-th character in string.
         idxOf = range.lowerBound
+        
         if startAt == idxOf {
           // Consecutive letter & start-of-string Bonus
           charScore = 0.7
@@ -85,7 +99,7 @@ public extension String {
           // Acronym Bonus
           // Weighing Logic: Typing the first character of an acronym is as if you
           // preceded it with two perfect character matches.
-          if string[string.index(idxOf, offsetBy: -1)] == " " {
+          if string[string.index(before: idxOf)] == " " {
             charScore += 0.8
           }
         }
@@ -115,7 +129,8 @@ public extension String {
     // Reduce penalty for longer strings.
     finalScore = 0.5 * (runningScore / Double(strLength) + runningScore / Double(wordLength)) / fuzzies
     
-    if (lWord[lWord.startIndex] == lString[lString.startIndex]) && (finalScore < 0.85) {
+    if (finalScore < 0.85) &&
+      (lWord.charStrAt(0).compare(lString.charStrAt(0), options: .diacriticInsensitive) == .orderedSame) {
       finalScore += 0.15
     }
     
