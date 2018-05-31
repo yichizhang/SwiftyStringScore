@@ -3,30 +3,40 @@ import Quick
 import Nimble
 import SwiftyStringScore
 
-class StringScoreTestSpec: QuickSpec
-{
-    var testCaseArray: [StringScoreTestCase]!
-    var precision: Double!
-
-    override func setUp()
-    {
-        super.setUp()
+class StringScoreTestSpec: QuickSpec {
+  
+  var testCaseArray: [TestCase]!
+  var precision: Double!
+  
+  override func setUp() {
+    super.setUp()
+  }
+  
+  override func spec() {
+    precision = 0.00001
+    
+    describe("score of") {
+      for testCase in TestCases.default {
+        context(testCase.description, {
+          it("is \(testCase.score)", closure: {
+            let actualScore = testCase.text.score(word: testCase.keyword, fuzziness: testCase.fz)
+            
+            expect(actualScore).to(beCloseTo(testCase.score, within: self.precision))
+          })
+        })
+      }
     }
-    override func spec()
-    {
-        testCaseArray = StringScoreTestCaseManager.defaultTestCaseArray()
-        precision = 0.00001
-
-        describe("String scores") {
-            for testCase in self.testCaseArray {
-                context(testCase.description, {
-                    it("Returns correct score", closure: {
-                      let actualScore = testCase.text.score(word: testCase.searchString, fuzziness: testCase.fuzziness)
-
-                        expect(actualScore).to(beCloseTo(testCase.expectedScore, within: self.precision))
-                    })
-                })
-            }
-        }
+    
+    describe("score of") {
+      for testCase in TestCases.diacritics {
+        context(testCase.description, {
+          it("is \(testCase.score)", closure: {
+            let actualScore = testCase.text.score(word: testCase.keyword, fuzziness: testCase.fz)
+            
+            expect(actualScore).to(beCloseTo(testCase.score, within: self.precision))
+          })
+        })
+      }
     }
+  }
 }

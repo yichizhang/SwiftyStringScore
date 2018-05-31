@@ -10,8 +10,8 @@ import Foundation
 
 extension Double
 {
-    func yz_toString() -> String
-    {
-        return NSString(format: "%.3f", self) as String
-    }
+  func yz_toString() -> String
+  {
+    return NSString(format: "%.3f", self) as String
+  }
 }
