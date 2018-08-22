@@ -82,7 +82,7 @@ public extension String {
       if let range = lString.range(
         of: lWord.charStrAt(i),
         options: [.caseInsensitive, .diacriticInsensitive],
-        range: Range<String.Index>(startAt..<lString.endIndex),
+        range: startAt..<lString.endIndex,
         locale: nil
         ) {
         
