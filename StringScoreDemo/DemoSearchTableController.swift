@@ -98,7 +98,7 @@ class DemoSearchTableController: UITableViewController, UISearchBarDelegate, UIS
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
-    let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: defaultCellReuseIdentifier)
+    let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: defaultCellReuseIdentifier)
     
     cell.textLabel?.text = dataSourceArray[(indexPath as NSIndexPath).row]
     cell.detailTextLabel?.text = ""
@@ -165,7 +165,7 @@ class ResultsTableController: UITableViewController, UISearchControllerDelegate
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
-    let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: defaultCellReuseIdentifier)
+    let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: defaultCellReuseIdentifier)
     
     let t = searchResultArray[(indexPath as NSIndexPath).row]
     
