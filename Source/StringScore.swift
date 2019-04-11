@@ -58,13 +58,11 @@ public extension String {
     var finalScore = 0.0
     
     let string = self
-    let lString = string.lowercased()
     let strLength = string.count
-    let lWord = word.lowercased()
     let wordLength = word.count
     
     var idxOf: String.Index!
-    var startAt = lString.startIndex
+    var startAt = string.startIndex
     var fuzzies = 1.0
     var fuzzyFactor = 0.0
     var fuzzinessIsNil = true
@@ -79,10 +77,10 @@ public extension String {
       // Find next first case-insensitive match of word's i-th character.
       // The search in "string" begins at "startAt".
       
-      if let range = lString.range(
-        of: lWord.charStrAt(i),
+      if let range = string.range(
+        of: word.charStrAt(i),
         options: [.caseInsensitive, .diacriticInsensitive],
-        range: startAt..<lString.endIndex,
+        range: startAt..<string.endIndex,
         locale: nil
         ) {
         
@@ -130,7 +128,7 @@ public extension String {
     finalScore = 0.5 * (runningScore / Double(strLength) + runningScore / Double(wordLength)) / fuzzies
     
     if (finalScore < 0.85) &&
-      (lWord.charStrAt(0).compare(lString.charStrAt(0), options: .diacriticInsensitive) == .orderedSame) {
+      (word.charStrAt(0).compare(string.charStrAt(0), options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame) {
       finalScore += 0.15
     }
     
