@@ -58,10 +58,10 @@ public extension String {
     var finalScore = 0.0
     
     let string = self
-    let lString = string.lowercased()
+    let lString = string
     let strLength = string.count
-    let lWord = word.lowercased()
-    let wordLength = word.count
+    let lWord = word
+    let wordLength = lWord.count
     
     var idxOf: String.Index!
     var startAt = lString.startIndex
@@ -130,7 +130,7 @@ public extension String {
     finalScore = 0.5 * (runningScore / Double(strLength) + runningScore / Double(wordLength)) / fuzzies
     
     if (finalScore < 0.85) &&
-      (lWord.charStrAt(0).compare(lString.charStrAt(0), options: .diacriticInsensitive) == .orderedSame) {
+      (lWord.charStrAt(0).compare(lString.charStrAt(0), options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame) {
       finalScore += 0.15
     }
     
