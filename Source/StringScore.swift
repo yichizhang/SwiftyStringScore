@@ -129,7 +129,8 @@ public extension String {
     // Reduce penalty for longer strings.
     finalScore = 0.5 * (runningScore / Double(strLength) + runningScore / Double(wordLength)) / fuzzies
     
-    if (finalScore < 0.85) && (lWord.charStrAt(0).compare(lString.charStrAt(0), options: .diacriticInsensitive) == .orderedSame) {
+    if (finalScore < 0.85) &&
+      (lWord.charStrAt(0).compare(lString.charStrAt(0), options: .diacriticInsensitive) == .orderedSame) {
       finalScore += 0.15
     }
     
