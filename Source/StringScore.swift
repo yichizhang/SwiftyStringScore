@@ -58,10 +58,10 @@ public extension String {
     var finalScore = 0.0
     
     let string = self
-    let lString = string
-    let strLength = string.count
-    let lWord = word
-    let wordLength = lWord.count
+    let lString = string.lowercased()
+    let strLength = lString.count
+    let lWord = word.lowercased()
+    let wordLength = word.count
     
     var idxOf: String.Index!
     var startAt = lString.startIndex
@@ -99,7 +99,7 @@ public extension String {
           // Acronym Bonus
           // Weighing Logic: Typing the first character of an acronym is as if you
           // preceded it with two perfect character matches.
-          if string[string.index(before: idxOf)] == " " {
+          if lString[lString.index(before: idxOf)] == " " {
             charScore += 0.8
           }
         }
@@ -117,20 +117,19 @@ public extension String {
       }
       
       // Same case bonus.
-      if (string[idxOf] == word[word.index(word.startIndex, offsetBy: i)]) {
+      if (lString[idxOf] == word[word.index(word.startIndex, offsetBy: i)]) {
         charScore += 0.1
       }
       
       // Update scores and startAt position for next round of indexOf
       runningScore += charScore
-      startAt = string.index(idxOf, offsetBy: 1)
+      startAt = lString.index(after: idxOf)
     }
     
     // Reduce penalty for longer strings.
     finalScore = 0.5 * (runningScore / Double(strLength) + runningScore / Double(wordLength)) / fuzzies
     
-    if (finalScore < 0.85) &&
-      (lWord.charStrAt(0).compare(lString.charStrAt(0), options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame) {
+    if (finalScore < 0.85) && (lWord.charStrAt(0).compare(lString.charStrAt(0), options: .diacriticInsensitive) == .orderedSame) {
       finalScore += 0.15
     }
     
